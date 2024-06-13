@@ -25,8 +25,15 @@ export default function Square({
     () => ({
       accept: ItemTypes.KNIGHT,
       drop: () => {
-        if (canMoveKnight(knightPosition, { toX: x, toY: y }))
+        console.log(
+          `x = ${x}, y = ${y}, knightPosition = ${knightPosition}, canMoove = ${canMoveKnight(
+            knightPosition,
+            { toX: x, toY: y }
+          )}`
+        );
+        if (canMoveKnight(knightPosition, { toX: x, toY: y })) {
           setKnightPosition([x, y]);
+        }
       },
       collect: (monitor) => ({
         isOver: !!monitor.isOver(),
@@ -36,6 +43,14 @@ export default function Square({
   );
   return (
     <div
+      onClick={() => {
+        console.log(
+          `x = ${x}, y = ${y}, knightPosition = ${knightPosition}, canMoove = ${canMoveKnight(
+            knightPosition,
+            { toX: x, toY: y }
+          )}`
+        );
+      }}
       ref={drop}
       style={{
         position: "relative",
